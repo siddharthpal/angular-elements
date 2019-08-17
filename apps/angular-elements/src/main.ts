@@ -1,7 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { CarWrapperModule } from '@angular-elements/car';
+import { TodoWrapperModule } from '@angular-elements/todo-app';
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -9,5 +9,5 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(CarWrapperModule)
+  .bootstrapModule(TodoWrapperModule)
   .catch(err => console.error(err));

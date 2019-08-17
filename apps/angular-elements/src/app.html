@@ -1,5 +1,30 @@
-  
-<h1>Cars</h1>
-<div ng-repeat="car in $ctrl.cars">
-  <car-element ng-prop-name="car"></car-element>
+<div class="container">
+  <div>
+    <h1>Todo MVC App</h1>
+    <h2>Angular JS</h2>
+    <section class="todoapp">
+      <header class="header">
+        <h1>todos</h1>
+        <input class="new-todo" placeholder="What needs to be done?" ng-enter="addTodo()" ng-model="newTodo"
+          ng-disabled="saving" autofocus>
+      </header>
+      <section class="main" ng-show="todos.length" ng-cloak>
+        <ul class="todo-list">
+          <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed}">
+            <div class="view">
+              <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="toggleCompleted(todo)">
+              <label>{{todo.title}}</label>
+              <button class="destroy" ng-click="removeTodo(todo)"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <footer class="footer">
+        <span class="todo-count"><strong>{{remainingCount}}</strong> item left</span>
+      </footer>
+    </section>
+  </div>
+  <div>
+      
+  </div>
 </div>

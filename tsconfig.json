@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-elements/car": ["libs/car/src/index.ts"]
+      "@angular-elements/todo-app": ["libs/todo/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
