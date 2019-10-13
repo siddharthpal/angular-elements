@@ -6,11 +6,31 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  newTodo = '';
+  todos=[];
+  constructor() {}
 
-  constructor() { }
+  addTodo() {
+    const newTodo = {
+      title: this.newTodo.trim(),
+      completed: false
+    };
 
-  @Input() name: string;
-  ngOnInit() {
+    if (!newTodo.title) {
+      return;
+    }
+
+    this.todos.push(newTodo);
+    this.newTodo = '';
   }
 
+  toggle(){
+
+  }
+
+  delete(todo) {
+    
+  }
+
+  ngOnInit() {}
 }

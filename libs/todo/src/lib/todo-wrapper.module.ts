@@ -14,7 +14,7 @@ import { TodoModule } from './todo.module';
       const todoElement = createCustomElement(TodoComponent, {
         injector: this.injector
       });
-      customElements.define('todo-root-ng1', todoElement);
+      customElements.define('todo-root-angular-element', todoElement);
     }
   
     ngDoBootstrap() {}
