@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, NgZone } from '@angular/core';
 
 @Component({
   selector: 'angular-elements-todo',
@@ -6,9 +6,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  @Output() addTodoEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output() removeTodoEmitter: EventEmitter<any> = new EventEmitter<any>();
+
+
   newTodo = '';
-  todos=[];
-  constructor() {}
+  todos = [];
+  constructor(private ngZone: NgZone) {}
 
   addTodo() {
     const newTodo = {
@@ -20,16 +24,27 @@ export class TodoComponent implements OnInit {
       return;
     }
 
-    this.todos.push(newTodo);
+    this.pushTodoItem(newTodo);
+    this.addTodoEmitter.emit(newTodo);
     this.newTodo = '';
   }
+  @Input() public pushTodoItem = todo => {
+    this.ngZone.run(() => {
+      this.todos.push(todo);
+    });
+  };
 
-  toggle(){
+  @Input() public deleteTodoItem = todo => {
+    this.ngZone.run(() => {
+      this.todos = this.todos.filter(t => t.title !== todo.title);
+    });
+  };
 
-  }
+  toggle() {}
 
   delete(todo) {
-    
+    this.removeTodoEmitter.emit(todo);
+    this.todos = this.todos.filter(t => t.title !== todo.title);
   }
 
   ngOnInit() {}
